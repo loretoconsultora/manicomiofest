@@ -2,9 +2,10 @@ import Image from "next/image";
 import ArtImage from "@/components/ArtImage";
 import Countdown from "@/components/Countdown";
 import HeroVideo from "@/components/HeroVideo";
+import { CurrentPrice, PriceTiers } from "@/components/Price";
 import RegistroForm from "@/components/RegistroForm";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
-import { EVENT, WHATSAPP_MESSAGE, mxn, whatsappLink } from "@/lib/event";
+import { EVENT, WHATSAPP_MESA, WHATSAPP_MESSAGE, mxn, whatsappLink } from "@/lib/event";
 
 const quickBuy = whatsappLink(WHATSAPP_MESSAGE);
 
@@ -20,8 +21,8 @@ const highlights = [
     icon: "🎭",
   },
   {
-    title: "Premios",
-    text: "Los mejores disfraces se llevan premio. Prepárate.",
+    title: `${mxn(EVENT.prizes)} en premios`,
+    text: "Para los mejores disfraces de la noche. Prepárate.",
     icon: "🏆",
   },
 ];
@@ -42,6 +43,29 @@ const dressIdeas = [
   {
     title: "Dark glam",
     text: "Negro y rojo, maquillaje de impacto. Elegante, pero inquietante.",
+  },
+];
+
+const faqs = [
+  {
+    q: "¿Necesito disfraz para entrar?",
+    a: "Es lo ideal para vivir y compartir el ambiente con todos, y además te permite participar en el concurso de disfraces.",
+  },
+  {
+    q: "¿Hay venta en puerta?",
+    a: "Sí, sujeta a disponibilidad, a $599 por persona.",
+  },
+  {
+    q: "¿Piden identificación oficial?",
+    a: "Sí. Para entrar necesitas tu identificación oficial y estar en la lista de asistentes.",
+  },
+  {
+    q: "¿Hay estacionamiento?",
+    a: "Sí, hay estacionamiento disponible en Plaza Campa.",
+  },
+  {
+    q: "¿Hay reembolsos?",
+    a: "No. Al tratarse de un evento en vivo con lugares limitados, una vez comprados los accesos no hay reembolso. Estamos seguros de que la pasarás increíble.",
   },
 ];
 
@@ -80,7 +104,7 @@ export default function Home() {
 
         <div className="relative z-10 flex w-full max-w-4xl flex-col items-center">
           <span className="mb-8 rounded-full border border-blood-bright/70 bg-black/40 px-4 py-1 text-xs font-bold uppercase tracking-[0.3em] text-blood-bright backdrop-blur">
-            Adults only · +18
+            Adults only · +18 · Solo {EVENT.capacity} accesos
           </span>
           <Image
             src="/logo-m-producciones.webp"
@@ -120,7 +144,7 @@ export default function Home() {
               href="#registro"
               className="rounded-md bg-blood-bright px-8 py-4 font-display text-lg font-semibold uppercase tracking-wider text-white shadow-[0_0_40px_rgba(228,75,59,0.45)] transition hover:bg-blood"
             >
-              Registrarme · {mxn(EVENT.price)}
+              Registrarme · <CurrentPrice />
             </a>
             <a
               href="#evento"
@@ -138,7 +162,7 @@ export default function Home() {
           <Eyebrow>La noche</Eyebrow>
           <Heading>Bienvenido al manicomio</Heading>
           <p className="mx-auto mt-4 max-w-2xl text-muted">
-            Una noche de Halloween exclusiva en el corazón del Querétaro moderno. Cupo limitado.
+            Una noche de Halloween exclusiva en el corazón del Querétaro moderno. Solo {EVENT.capacity} accesos.
           </p>
         </div>
         <div className="mt-14 grid gap-px overflow-hidden rounded-lg border border-wine/60 bg-wine/40 sm:grid-cols-3">
@@ -195,6 +219,47 @@ export default function Home() {
         </div>
       </section>
 
+      {/* LINE-UP */}
+      <section id="lineup" className="mx-auto max-w-5xl px-4 py-24 text-center">
+        <Eyebrow>Line-up</Eyebrow>
+        <Heading>DJ&apos;s por revelar</Heading>
+        <p className="mx-auto mt-4 max-w-2xl text-muted">
+          Los nombres se revelan el {EVENT.lineupReveal}. Síguenos en{" "}
+          <a href={EVENT.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-white underline decoration-blood-bright underline-offset-4">
+            {EVENT.instagramUser}
+          </a>{" "}
+          para enterarte primero.
+        </p>
+        <div className="mt-14 grid grid-cols-3 gap-3 sm:gap-6">
+          {[1, 2, 3].map((n) => (
+            <div
+              key={n}
+              className="group relative aspect-[3/4] overflow-hidden rounded-lg border border-wine/60 bg-[radial-gradient(ellipse_at_50%_35%,var(--wine-deep),var(--abyss)_70%)]"
+            >
+              <svg
+                viewBox="0 0 200 260"
+                aria-hidden
+                className="absolute inset-x-0 bottom-0 mx-auto w-4/5 fill-black drop-shadow-[0_0_25px_rgba(228,75,59,0.5)]"
+              >
+                {/* Silueta de DJ con audífonos */}
+                <circle cx="100" cy="78" r="38" />
+                <path d="M58 78a42 42 0 0 1 84 0" fill="none" stroke="#000" strokeWidth="10" />
+                <rect x="50" y="70" width="16" height="28" rx="6" />
+                <rect x="134" y="70" width="16" height="28" rx="6" />
+                <path d="M30 260c0-62 30-118 70-118s70 56 70 118z" />
+              </svg>
+              <span className="absolute inset-0 flex items-start justify-center pt-4 font-display text-4xl font-bold text-blood-bright/80 sm:pt-8 sm:text-7xl transition group-hover:text-blood-bright">
+                ?
+              </span>
+              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/80 to-transparent p-2 pt-8 sm:p-5 sm:pt-12">
+                <p className="font-display text-sm font-semibold uppercase text-white sm:text-xl">DJ invitado</p>
+                <p className="hidden text-xs uppercase tracking-[0.2em] text-blood-bright sm:block">Se revela el {EVENT.lineupReveal}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* REGISTRO */}
       <section id="registro" className="mx-auto grid max-w-5xl gap-12 px-4 py-24 md:grid-cols-2 md:items-center">
         <div>
@@ -203,9 +268,9 @@ export default function Home() {
           <p className="mt-4 text-muted">
             Regístrate aquí y termina tu compra por WhatsApp. Pago por transferencia.
           </p>
-          <div className="mt-8 flex items-baseline gap-3">
-            <span className="font-display text-7xl font-bold text-blood-bright">{mxn(EVENT.price)}</span>
-            <span className="text-muted">por persona</span>
+          <div className="mt-8">
+            <PriceTiers />
+            <p className="mt-3 text-xs text-muted">Precio por persona. Solo {EVENT.capacity} accesos.</p>
           </div>
           <ol className="mt-8 space-y-4">
             {steps.map((step, i) => (
@@ -226,6 +291,40 @@ export default function Home() {
         </div>
       </section>
 
+      {/* MESAS VIP */}
+      <section id="mesas" className="px-4 pb-24">
+        <div className="relative mx-auto max-w-5xl overflow-hidden rounded-2xl border border-blood-bright/40 bg-[linear-gradient(135deg,var(--ember),var(--abyss)_60%)] p-8 shadow-[0_0_80px_rgba(122,37,27,0.35)] sm:p-12">
+          <div aria-hidden className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-blood-bright/20 blur-3xl" />
+          <div className="relative grid gap-8 md:grid-cols-[1.4fr_1fr] md:items-center">
+            <div>
+              <Eyebrow>Experiencia VIP</Eyebrow>
+              <Heading>Reserva tu mesa</Heading>
+              <p className="mt-4 text-muted">
+                Para grupos de 8 a 10 personas. Incluye botella y accesos para todo tu grupo.
+              </p>
+              <ul className="mt-6 flex flex-wrap gap-2 text-xs uppercase tracking-[0.2em]">
+                {["8 – 10 personas", "Botella incluida", "Accesos incluidos"].map((t) => (
+                  <li key={t} className="rounded-full border border-wine px-3 py-1 text-white">
+                    {t}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="text-center md:text-right">
+              <a
+                href={whatsappLink(WHATSAPP_MESA)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block w-full rounded-md border border-white/80 bg-white px-8 py-4 font-display text-lg font-semibold uppercase tracking-wider text-black transition hover:bg-transparent hover:text-white md:w-auto"
+              >
+                Reservar mesa
+              </a>
+              <p className="mt-3 text-xs text-muted">Precio y disponibilidad por WhatsApp. Mesas limitadas.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* DRESS CODE */}
       <section id="dresscode" className="mx-auto max-w-5xl px-4 py-24">
         <div className="text-center">
@@ -241,6 +340,27 @@ export default function Home() {
               <h3 className="font-display text-xl font-semibold uppercase text-white">{d.title}</h3>
               <p className="mt-2 text-sm text-muted">{d.text}</p>
             </div>
+          ))}
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section id="faq" className="mx-auto max-w-3xl px-4 py-24">
+        <div className="text-center">
+          <Eyebrow>Preguntas frecuentes</Eyebrow>
+          <Heading>Antes de entrar</Heading>
+        </div>
+        <div className="mt-12 divide-y divide-wine/50 border-y border-wine/50">
+          {faqs.map((f) => (
+            <details key={f.q} className="group py-5">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-semibold uppercase text-white sm:text-xl">
+                {f.q}
+                <span className="text-2xl text-blood-bright transition group-open:rotate-45" aria-hidden>
+                  +
+                </span>
+              </summary>
+              <p className="mt-3 text-muted">{f.a}</p>
+            </details>
           ))}
         </div>
       </section>
@@ -281,7 +401,7 @@ export default function Home() {
         href="#registro"
         className="fixed bottom-4 left-4 right-[84px] z-50 rounded-md bg-blood-bright py-4 text-center font-display text-lg font-semibold uppercase tracking-wider text-white shadow-[0_10px_40px_rgba(0,0,0,0.8)] sm:hidden"
       >
-        Registrarme · {mxn(EVENT.price)}
+        Registrarme · <CurrentPrice />
       </a>
     </main>
   );

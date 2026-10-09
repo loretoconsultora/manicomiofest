@@ -1,13 +1,15 @@
 "use client";
 
 import { useState } from "react";
-import { EVENT, WHATSAPP_MESSAGE, mxn, whatsappLink } from "@/lib/event";
+import { WHATSAPP_MESSAGE, mxn, whatsappLink } from "@/lib/event";
+import { useTier } from "./useTier";
 
 const input =
   "w-full rounded-md border border-white/15 bg-black/60 px-4 py-3 text-foreground placeholder:text-muted/70 outline-none transition focus:border-blood-bright focus:ring-1 focus:ring-blood-bright";
 
 export default function RegistroForm() {
   const [personas, setPersonas] = useState(1);
+  const tier = useTier();
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -19,7 +21,8 @@ export default function RegistroForm() {
       `Teléfono: ${f.get("telefono")}`,
       `Correo: ${f.get("correo")}`,
       `Personas: ${personas}`,
-      `Total: ${mxn(personas * EVENT.price)}`,
+      `Precio: ${tier.label} ${mxn(tier.price)} por persona`,
+      `Total: ${mxn(personas * tier.price)}`,
       "Pago: transferencia",
       "",
       "Confirmo que todos los asistentes son mayores de 18 años.",
@@ -87,7 +90,7 @@ export default function RegistroForm() {
       </label>
       <div className="flex items-center justify-between border-t border-white/10 pt-4">
         <span className="text-muted">Total</span>
-        <span className="font-display text-4xl font-bold text-white">{mxn(personas * EVENT.price)}</span>
+        <span className="font-display text-4xl font-bold text-white">{mxn(personas * tier.price)}</span>
       </div>
       <button
         type="submit"
