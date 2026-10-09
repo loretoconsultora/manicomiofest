@@ -12,7 +12,7 @@ const quickBuy = whatsappLink(WHATSAPP_MESSAGE);
 const highlights = [
   {
     title: "DJ's invitados",
-    text: "Música toda la noche, de las 8 PM a las 2 AM.",
+    text: `Música toda la noche, de las 8 PM a las 2 AM. Line-up se revela el ${EVENT.lineupReveal}.`,
     icon: "🎧",
   },
   {
@@ -216,47 +216,6 @@ export default function Home() {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* LINE-UP */}
-      <section id="lineup" className="mx-auto max-w-5xl px-4 py-24 text-center">
-        <Eyebrow>Line-up</Eyebrow>
-        <Heading>DJ&apos;s por revelar</Heading>
-        <p className="mx-auto mt-4 max-w-2xl text-muted">
-          Los nombres se revelan el {EVENT.lineupReveal}. Síguenos en{" "}
-          <a href={EVENT.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-white underline decoration-blood-bright underline-offset-4">
-            {EVENT.instagramUser}
-          </a>{" "}
-          para enterarte primero.
-        </p>
-        <div className="mt-14 grid grid-cols-3 gap-3 sm:gap-6">
-          {[1, 2, 3].map((n) => (
-            <div
-              key={n}
-              className="group relative aspect-[3/4] overflow-hidden rounded-lg border border-wine/60 bg-[radial-gradient(ellipse_at_50%_35%,var(--wine-deep),var(--abyss)_70%)]"
-            >
-              <svg
-                viewBox="0 0 200 260"
-                aria-hidden
-                className="absolute inset-x-0 bottom-0 mx-auto w-4/5 fill-black drop-shadow-[0_0_25px_rgba(228,75,59,0.5)]"
-              >
-                {/* Silueta de DJ con audífonos */}
-                <circle cx="100" cy="78" r="38" />
-                <path d="M58 78a42 42 0 0 1 84 0" fill="none" stroke="#000" strokeWidth="10" />
-                <rect x="50" y="70" width="16" height="28" rx="6" />
-                <rect x="134" y="70" width="16" height="28" rx="6" />
-                <path d="M30 260c0-62 30-118 70-118s70 56 70 118z" />
-              </svg>
-              <span className="absolute inset-0 flex items-start justify-center pt-4 font-display text-4xl font-bold text-blood-bright/80 sm:pt-8 sm:text-7xl transition group-hover:text-blood-bright">
-                ?
-              </span>
-              <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black via-black/80 to-transparent p-2 pt-8 sm:p-5 sm:pt-12">
-                <p className="font-display text-sm font-semibold uppercase text-white sm:text-xl">DJ invitado</p>
-                <p className="hidden text-xs uppercase tracking-[0.2em] text-blood-bright sm:block">Se revela el {EVENT.lineupReveal}</p>
-              </div>
-            </div>
-          ))}
         </div>
       </section>
 
