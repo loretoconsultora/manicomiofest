@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { EVENT, mxn, whatsappLink } from "@/lib/event";
+import { EVENT, WHATSAPP_MESSAGE, mxn, whatsappLink } from "@/lib/event";
 
 const input =
   "w-full rounded-md border border-white/15 bg-black/60 px-4 py-3 text-foreground placeholder:text-muted/70 outline-none transition focus:border-blood-bright focus:ring-1 focus:ring-blood-bright";
@@ -13,7 +13,7 @@ export default function RegistroForm() {
     e.preventDefault();
     const f = new FormData(e.currentTarget);
     const msg = [
-      `Hola, quiero mis accesos para *${EVENT.name}* 🎃`,
+      WHATSAPP_MESSAGE,
       "",
       `Nombre: ${f.get("nombre")}`,
       `Teléfono: ${f.get("telefono")}`,

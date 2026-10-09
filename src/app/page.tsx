@@ -1,10 +1,12 @@
 import Image from "next/image";
+import ArtImage from "@/components/ArtImage";
 import Countdown from "@/components/Countdown";
+import HeroVideo from "@/components/HeroVideo";
 import RegistroForm from "@/components/RegistroForm";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
-import { EVENT, mxn, whatsappLink } from "@/lib/event";
+import { EVENT, WHATSAPP_MESSAGE, mxn, whatsappLink } from "@/lib/event";
 
-const quickBuy = whatsappLink(`Hola, quiero información para comprar accesos para ${EVENT.name} 🎃`);
+const quickBuy = whatsappLink(WHATSAPP_MESSAGE);
 
 const highlights = [
   {
@@ -67,18 +69,12 @@ export default function Home() {
     <main className="overflow-x-hidden">
       {/* HERO */}
       <section className="relative flex min-h-[100svh] flex-col items-center justify-center overflow-hidden px-4 py-20 text-center">
-        <Image
-          src="/hero-bg.webp"
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="scale-110 object-cover opacity-70"
-        />
+        <ArtImage priority className="absolute inset-0 h-full w-full object-cover opacity-60" />
+        <HeroVideo />
         <div className="fog" aria-hidden />
         <div
           aria-hidden
-          className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(5,2,2,0.2)_20%,#050202_80%)]"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(5,2,2,0.45)_15%,rgba(5,2,2,0.85)_70%,#050202_95%)]"
         />
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-b from-transparent to-background" />
 
@@ -171,8 +167,13 @@ export default function Home() {
       </section>
 
       {/* EXPERIENCIA */}
-      <section className="relative border-y border-wine-deep bg-[linear-gradient(180deg,var(--abyss),var(--ember)_50%,var(--abyss))] px-4 py-24">
-        <div className="mx-auto max-w-5xl">
+      <section className="relative overflow-hidden border-y border-wine-deep px-4 py-24">
+        <ArtImage className="absolute inset-0 h-full w-full object-cover opacity-35" />
+        <div
+          aria-hidden
+          className="absolute inset-0 bg-[linear-gradient(180deg,var(--background),rgba(18,4,3,0.6)_50%,var(--background))]"
+        />
+        <div className="relative mx-auto max-w-5xl">
           <div className="text-center">
             <Eyebrow>Lo que te espera</Eyebrow>
             <Heading>Pierde la cordura</Heading>

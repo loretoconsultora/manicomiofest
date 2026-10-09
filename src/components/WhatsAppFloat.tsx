@@ -1,10 +1,10 @@
 import { FaWhatsapp } from "react-icons/fa";
-import { EVENT, whatsappLink } from "@/lib/event";
+import { WHATSAPP_MESSAGE, whatsappLink } from "@/lib/event";
 
 export default function WhatsAppFloat() {
   return (
     <a
-      href={whatsappLink(`Hola, tengo una duda sobre ${EVENT.name} 🎃`)}
+      href={whatsappLink(WHATSAPP_MESSAGE)}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escríbenos por WhatsApp"

@@ -17,6 +17,9 @@ export const EVENT = {
   instagramUser: "@mproduccionesyeventos",
 };
 
+export const WHATSAPP_MESSAGE =
+  "Hola, quiero reservar mi acceso para Manicomio Madness Night este 28 de octubre.";
+
 export function whatsappLink(message: string) {
   return `https://wa.me/${EVENT.whatsapp}?text=${encodeURIComponent(message)}`;
 }
