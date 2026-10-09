@@ -23,7 +23,7 @@ export const WHATSAPP_MESSAGE =
   "Hola, quiero reservar mi acceso para Manicomio Madness Night este 28 de octubre.";
 
 export const WHATSAPP_MESA =
-  "Hola, quiero reservar una mesa VIP para Manicomio Madness Night este 28 de octubre.";
+  "Hola, quiero reservar una mesa VIP para Manicomio Madness Night este 28 de octubre (8-10 personas con botella + accesos incluidos).";
 
 export type Tier = { id: "preventa" | "general" | "puerta"; label: string; price: number; when: string; endsAt?: string };
 
