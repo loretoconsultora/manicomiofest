@@ -195,25 +195,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* DRESS CODE */}
-      <section id="dresscode" className="mx-auto max-w-5xl px-4 py-24">
-        <div className="text-center">
-          <Eyebrow>Dress code</Eyebrow>
-          <Heading>Ideas para tu disfraz</Heading>
-          <p className="mx-auto mt-4 max-w-2xl text-muted">
-            Inspírate en el manicomio y ven listo para el concurso de disfraces.
-          </p>
-        </div>
-        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {dressIdeas.map((d) => (
-            <div key={d.title} className="rounded-lg border border-wine/60 bg-abyss/70 p-6">
-              <h3 className="font-display text-xl font-semibold uppercase text-white">{d.title}</h3>
-              <p className="mt-2 text-sm text-muted">{d.text}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* REGISTRO */}
       <section id="registro" className="mx-auto grid max-w-5xl gap-12 px-4 py-24 md:grid-cols-2 md:items-center">
         <div>
@@ -242,6 +223,25 @@ export default function Home() {
         </div>
         <div className="rounded-xl border border-wine/60 bg-abyss/80 p-6 shadow-[0_0_60px_rgba(122,37,27,0.25)] sm:p-8">
           <RegistroForm />
+        </div>
+      </section>
+
+      {/* DRESS CODE */}
+      <section id="dresscode" className="mx-auto max-w-5xl px-4 py-24">
+        <div className="text-center">
+          <Eyebrow>Dress code</Eyebrow>
+          <Heading>Ideas para tu disfraz</Heading>
+          <p className="mx-auto mt-4 max-w-2xl text-muted">
+            Inspírate en el manicomio y ven listo para el concurso de disfraces.
+          </p>
+        </div>
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {dressIdeas.map((d) => (
+            <div key={d.title} className="rounded-lg border border-wine/60 bg-abyss/70 p-6">
+              <h3 className="font-display text-xl font-semibold uppercase text-white">{d.title}</h3>
+              <p className="mt-2 text-sm text-muted">{d.text}</p>
+            </div>
+          ))}
         </div>
       </section>
 
