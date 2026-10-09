@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Countdown from "@/components/Countdown";
 import RegistroForm from "@/components/RegistroForm";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { EVENT, mxn, whatsappLink } from "@/lib/event";
 
 const quickBuy = whatsappLink(`Hola, quiero información para comprar accesos para ${EVENT.name} 🎃`);
@@ -21,6 +22,32 @@ const highlights = [
     text: "Los mejores disfraces se llevan premio. Prepárate.",
     icon: "🏆",
   },
+];
+
+const dressIdeas = [
+  {
+    title: "Paciente del pabellón",
+    text: "Bata de hospital, camisa de fuerza, vendajes y mirada perdida.",
+  },
+  {
+    title: "Personal médico",
+    text: "Enfermeras, doctores y cirujanos siniestros. Batas manchadas incluidas.",
+  },
+  {
+    title: "Terror clásico",
+    text: "Los íconos del cine de terror, con tu propio toque.",
+  },
+  {
+    title: "Dark glam",
+    text: "Negro y rojo, maquillaje de impacto. Elegante, pero inquietante.",
+  },
+];
+
+const steps = [
+  "Regístrate con el formulario: tus datos se envían por WhatsApp.",
+  "Te compartimos los datos para pagar por transferencia.",
+  "Al confirmar tu pago recibes tu código QR.",
+  "Presenta tu QR en la entrada. El acceso es con el nombre registrado.",
 ];
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
@@ -110,49 +137,36 @@ export default function Home() {
       </section>
 
       {/* DETALLES */}
-      <section id="evento" className="mx-auto max-w-6xl px-4 py-24">
-        <div className="grid items-center gap-12 md:grid-cols-[1fr_1.1fr]">
-          <figure className="relative">
-            <div aria-hidden className="absolute -inset-4 rounded-2xl bg-wine/30 blur-2xl" />
-            <Image
-              src="/poster.webp"
-              alt="Póster oficial de Manicomio Madness Night"
-              width={1080}
-              height={1080}
-              sizes="(max-width: 768px) 100vw, 520px"
-              className="relative rounded-lg border border-white/10 shadow-2xl"
-            />
-          </figure>
-          <div>
-            <Eyebrow>La noche</Eyebrow>
-            <Heading>Bienvenido al manicomio</Heading>
-            <p className="mt-4 text-muted">
-              Una noche de Halloween exclusiva en el corazón del Querétaro moderno. Cupo limitado.
-            </p>
-            <dl className="mt-10 divide-y divide-white/10 border-y border-white/10">
-              {[
-                { k: "Fecha", v: EVENT.dateLabel, s: "2026" },
-                { k: "Horario", v: EVENT.timeLabel, s: "Noche de Halloween" },
-                { k: "Lugar", v: EVENT.venue, s: `${EVENT.address}, ${EVENT.city}` },
-              ].map((d) => (
-                <div key={d.k} className="flex items-baseline justify-between gap-6 py-5">
-                  <dt className="text-xs uppercase tracking-[0.3em] text-blood-bright">{d.k}</dt>
-                  <dd className="text-right">
-                    <span className="block font-display text-2xl font-semibold uppercase sm:text-3xl">{d.v}</span>
-                    <span className="text-sm text-muted">{d.s}</span>
-                  </dd>
-                </div>
-              ))}
-            </dl>
-            <a
-              href={EVENT.mapsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 inline-block text-sm uppercase tracking-[0.2em] text-muted underline decoration-blood-bright underline-offset-8 hover:text-white"
-            >
-              Cómo llegar →
-            </a>
-          </div>
+      <section id="evento" className="mx-auto max-w-5xl px-4 py-24">
+        <div className="text-center">
+          <Eyebrow>La noche</Eyebrow>
+          <Heading>Bienvenido al manicomio</Heading>
+          <p className="mx-auto mt-4 max-w-2xl text-muted">
+            Una noche de Halloween exclusiva en el corazón del Querétaro moderno. Cupo limitado.
+          </p>
+        </div>
+        <div className="mt-14 grid gap-px overflow-hidden rounded-lg border border-wine/60 bg-wine/40 sm:grid-cols-3">
+          {[
+            { k: "Fecha", v: EVENT.dateLabel, s: "2026" },
+            { k: "Horario", v: EVENT.timeLabel, s: "Noche de Halloween" },
+            { k: "Lugar", v: EVENT.venue, s: `${EVENT.address}, ${EVENT.city}` },
+          ].map((d) => (
+            <div key={d.k} className="bg-background p-8 text-center">
+              <p className="text-xs uppercase tracking-[0.3em] text-blood-bright">{d.k}</p>
+              <p className="mt-3 font-display text-2xl font-semibold uppercase sm:text-3xl">{d.v}</p>
+              <p className="mt-1 text-sm text-muted">{d.s}</p>
+            </div>
+          ))}
+        </div>
+        <div className="mt-6 text-center">
+          <a
+            href={EVENT.mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-sm uppercase tracking-[0.2em] text-muted underline decoration-blood-bright underline-offset-8 hover:text-white"
+          >
+            Cómo llegar →
+          </a>
         </div>
       </section>
 
@@ -180,23 +194,50 @@ export default function Home() {
         </div>
       </section>
 
+      {/* DRESS CODE */}
+      <section id="dresscode" className="mx-auto max-w-5xl px-4 py-24">
+        <div className="text-center">
+          <Eyebrow>Dress code</Eyebrow>
+          <Heading>Ideas para tu disfraz</Heading>
+          <p className="mx-auto mt-4 max-w-2xl text-muted">
+            Inspírate en el manicomio y ven listo para el concurso de disfraces.
+          </p>
+        </div>
+        <div className="mt-14 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {dressIdeas.map((d) => (
+            <div key={d.title} className="rounded-lg border border-wine/60 bg-abyss/70 p-6">
+              <h3 className="font-display text-xl font-semibold uppercase text-white">{d.title}</h3>
+              <p className="mt-2 text-sm text-muted">{d.text}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
       {/* REGISTRO */}
       <section id="registro" className="mx-auto grid max-w-5xl gap-12 px-4 py-24 md:grid-cols-2 md:items-center">
         <div>
           <Eyebrow>Accesos</Eyebrow>
           <Heading>Firma tu ingreso</Heading>
           <p className="mt-4 text-muted">
-            Regístrate aquí y termina tu compra por WhatsApp. Te confirmamos tu pago y tu lugar en la lista.
+            Regístrate aquí y termina tu compra por WhatsApp. Pago por transferencia.
           </p>
           <div className="mt-8 flex items-baseline gap-3">
             <span className="font-display text-7xl font-bold text-blood-bright">{mxn(EVENT.price)}</span>
             <span className="text-muted">por persona</span>
           </div>
-          <ul className="mt-8 space-y-3 text-sm text-muted">
-            <li>✦ Evento exclusivo para mayores de 18 años</li>
-            <li>✦ Cupo limitado</li>
-            <li>✦ Accesos por WhatsApp: {EVENT.whatsappLabel}</li>
-          </ul>
+          <ol className="mt-8 space-y-4">
+            {steps.map((step, i) => (
+              <li key={step} className="flex gap-4">
+                <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-blood-bright font-display text-blood-bright">
+                  {i + 1}
+                </span>
+                <span className="pt-1 text-sm text-muted">{step}</span>
+              </li>
+            ))}
+          </ol>
+          <p className="mt-8 rounded-md border border-wine/60 bg-ember/60 p-4 text-sm text-white">
+            Acceso solo con nombre registrado y código QR. Evento exclusivo para mayores de 18 años.
+          </p>
         </div>
         <div className="rounded-xl border border-wine/60 bg-abyss/80 p-6 shadow-[0_0_60px_rgba(122,37,27,0.25)] sm:p-8">
           <RegistroForm />
@@ -232,10 +273,12 @@ export default function Home() {
         </p>
       </footer>
 
-      {/* CTA fija en móvil */}
+      <WhatsAppFloat />
+
+      {/* CTA fija en móvil (deja espacio al botón de WhatsApp) */}
       <a
         href="#registro"
-        className="fixed inset-x-4 bottom-4 z-50 rounded-md bg-blood-bright py-4 text-center font-display text-lg font-semibold uppercase tracking-wider text-white shadow-[0_10px_40px_rgba(0,0,0,0.8)] sm:hidden"
+        className="fixed bottom-4 left-[84px] right-4 z-50 rounded-md bg-blood-bright py-4 text-center font-display text-lg font-semibold uppercase tracking-wider text-white shadow-[0_10px_40px_rgba(0,0,0,0.8)] sm:hidden"
       >
         Registrarme · {mxn(EVENT.price)}
       </a>

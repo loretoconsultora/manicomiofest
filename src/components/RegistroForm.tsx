@@ -20,6 +20,7 @@ export default function RegistroForm() {
       `Correo: ${f.get("correo")}`,
       `Personas: ${personas}`,
       `Total: ${mxn(personas * EVENT.price)}`,
+      "Pago: transferencia",
       "",
       "Confirmo que todos los asistentes son mayores de 18 años.",
     ].join("\n");
@@ -95,7 +96,7 @@ export default function RegistroForm() {
         Apartar por WhatsApp
       </button>
       <p className="text-center text-xs text-muted">
-        Al enviar se abrirá WhatsApp con tus datos para confirmar el pago y tu acceso.
+        Al enviar se abrirá WhatsApp con tus datos. Ahí te compartimos los datos de transferencia y, al confirmar tu pago, tu código QR.
       </p>
     </form>
   );
