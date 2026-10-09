@@ -86,11 +86,11 @@ export default function RegistroForm() {
       </label>
       <div className="flex items-center justify-between border-t border-white/10 pt-4">
         <span className="text-muted">Total</span>
-        <span className="font-display text-4xl text-foreground">{mxn(personas * EVENT.price)}</span>
+        <span className="font-display text-4xl font-bold text-white">{mxn(personas * EVENT.price)}</span>
       </div>
       <button
         type="submit"
-        className="w-full rounded-md bg-blood px-6 py-4 text-lg font-bold uppercase tracking-wider text-white shadow-[0_0_30px_rgba(227,36,43,0.35)] transition hover:bg-blood-bright"
+        className="w-full rounded-md bg-blood-bright px-6 py-4 font-display text-lg font-semibold uppercase tracking-wider text-white shadow-[0_0_30px_rgba(228,75,59,0.35)] transition hover:bg-blood"
       >
         Apartar por WhatsApp
       </button>

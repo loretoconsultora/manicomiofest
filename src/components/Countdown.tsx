@@ -28,9 +28,9 @@ export default function Countdown({ to }: { to: string }) {
       {Object.entries(left ?? { días: 0, horas: 0, min: 0, seg: 0 }).map(([label, value]) => (
         <div
           key={label}
-          className="w-16 rounded-md border border-white/10 bg-black/50 py-2 backdrop-blur sm:w-20"
+          className="w-16 rounded-md border border-wine/70 bg-black/60 py-2 backdrop-blur sm:w-20"
         >
-          <div className="font-display text-3xl tabular-nums text-blood-bright sm:text-4xl">
+          <div className="font-display text-3xl font-semibold tabular-nums text-white sm:text-4xl">
             {left ? String(value).padStart(2, "0") : "--"}
           </div>
           <div className="text-[10px] uppercase tracking-[0.25em] text-muted">{label}</div>
