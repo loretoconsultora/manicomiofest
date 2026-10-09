@@ -276,10 +276,10 @@ export default function Home() {
 
       <WhatsAppFloat />
 
-      {/* CTA fija en móvil (deja espacio al botón de WhatsApp) */}
+      {/* CTA fija en móvil (deja espacio al botón de WhatsApp a la derecha) */}
       <a
         href="#registro"
-        className="fixed bottom-4 left-[84px] right-4 z-50 rounded-md bg-blood-bright py-4 text-center font-display text-lg font-semibold uppercase tracking-wider text-white shadow-[0_10px_40px_rgba(0,0,0,0.8)] sm:hidden"
+        className="fixed bottom-4 left-4 right-[84px] z-50 rounded-md bg-blood-bright py-4 text-center font-display text-lg font-semibold uppercase tracking-wider text-white shadow-[0_10px_40px_rgba(0,0,0,0.8)] sm:hidden"
       >
         Registrarme · {mxn(EVENT.price)}
       </a>
