@@ -229,7 +229,10 @@ export default function Home() {
           </p>
           <div className="mt-8">
             <PriceTiers />
-            <p className="mt-3 text-xs text-muted">Precio por persona. Acceso limitado.</p>
+            <p className="mt-3 text-xs text-muted">
+              Precio por persona. <span className="font-semibold text-white">Tu acceso incluye un trago.</span> Acceso
+              limitado.
+            </p>
           </div>
           <ol className="mt-8 space-y-4">
             {steps.map((step, i) => (

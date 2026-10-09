@@ -77,6 +77,7 @@ function sendConfirmation(d, folio) {
     "<p>Hola " + esc(d.nombre) + ", recibimos tu registro.</p>" +
     '<p style="font-size:22px;margin:24px 0">Folio: <b style="color:#E44B3B">' + folio + "</b></p>" +
     "<p>" + d.personas + " persona(s) · " + esc(d.etapa) + " " + money(d.precio) + " c/u · <b>Total " + money(d.total) + "</b></p>" +
+    "<p>Tu acceso incluye un trago.</p>" +
     '<p style="margin-top:24px"><b>Siguiente paso:</b> te compartimos por WhatsApp los datos para pagar por transferencia. ' +
     "Al confirmar tu pago recibirás tu código QR.</p>" +
     '<p style="color:#a8948f">Acceso solo con nombre registrado, código QR e identificación oficial. Evento exclusivo para mayores de 18 años.</p>' +
