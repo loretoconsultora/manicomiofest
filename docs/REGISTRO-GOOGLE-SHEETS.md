@@ -38,7 +38,7 @@ y el mensaje de WhatsApp debe incluir `Folio: MMN-0001`. Borra la fila de prueba
 ## Uso diario
 
 - Cuando alguien pague, cambia **Estado de pago** a `Pagado` (puedes usar validación de datos para un menú).
-- Filtra por estado para ver pendientes; la suma de **Personas** con estado `Pagado` te dice cuántos de los 300 accesos van.
+- Filtra por estado para ver pendientes; la suma de **Personas** con estado `Pagado` te dice cuántos accesos van vendidos.
 - Comparte la hoja con quien cobra y con quien hace el check-in en la puerta.
 
 ## Notas

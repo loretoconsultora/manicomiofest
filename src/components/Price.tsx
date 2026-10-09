@@ -25,7 +25,7 @@ export function PriceTiers() {
             } ${past ? "opacity-40" : ""}`}
           >
             <p className={`text-[10px] uppercase tracking-[0.2em] ${active ? "text-blood-bright" : "text-muted"}`}>
-              {active ? `${t.label} · Vigente` : t.label}
+              {active ? `${t.short} · Vigente` : t.short}
             </p>
             <p className={`mt-1 font-display text-3xl font-bold sm:text-4xl ${past ? "line-through" : "text-white"}`}>
               {mxn(t.price)}

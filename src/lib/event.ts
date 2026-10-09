@@ -10,8 +10,6 @@ export const EVENT = {
   city: "Querétaro",
   mapsUrl:
     "https://www.google.com/maps/search/?api=1&query=Black+Lounge+Plaza+Campa+Quer%C3%A9taro",
-  capacity: 300,
-  prizes: 10000,
   lineupReveal: "19 de octubre",
   whatsapp: "524422007615",
   whatsappLabel: "+52 442 200 7615",
@@ -25,17 +23,17 @@ export const WHATSAPP_MESSAGE =
 export const WHATSAPP_MESA =
   "Hola, quiero reservar una mesa VIP para Manicomio Madness Night este 28 de octubre (8-10 personas con botella + accesos incluidos).";
 
-export type Tier = { id: "preventa" | "general" | "puerta"; label: string; price: number; when: string; endsAt?: string };
+export type Tier = { id: string; label: string; short: string; price: number; when: string; endsAt: string };
 
 // Cortes en hora de Querétaro (UTC-6)
 export const TIERS: Tier[] = [
-  { id: "preventa", label: "Preventa", price: 399, when: "Hasta el 18 de octubre", endsAt: "2026-10-19T00:00:00-06:00" },
-  { id: "general", label: "General", price: 499, when: "19 al 28 de octubre", endsAt: "2026-10-28T20:00:00-06:00" },
-  { id: "puerta", label: "En puerta", price: 599, when: "Sujeto a disponibilidad" },
+  { id: "fase1", label: "Preventa Fase 1", short: "Fase 1", price: 350, when: "9 al 16 de octubre", endsAt: "2026-10-17T00:00:00-06:00" },
+  { id: "fase2", label: "Preventa Fase 2", short: "Fase 2", price: 400, when: "17 al 23 de octubre", endsAt: "2026-10-24T00:00:00-06:00" },
+  { id: "fase3", label: "Preventa Fase 3", short: "Fase 3", price: 450, when: "24 al 28 de octubre", endsAt: "2026-10-28T20:00:00-06:00" },
 ];
 
 export function tierAt(now: number): Tier {
-  return TIERS.find((t) => t.endsAt && now < new Date(t.endsAt).getTime()) ?? TIERS[TIERS.length - 1];
+  return TIERS.find((t) => now < new Date(t.endsAt).getTime()) ?? TIERS[TIERS.length - 1];
 }
 
 export function whatsappLink(message: string) {

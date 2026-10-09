@@ -5,7 +5,7 @@ import HeroVideo from "@/components/HeroVideo";
 import { CurrentPrice, PriceTiers } from "@/components/Price";
 import RegistroForm from "@/components/RegistroForm";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
-import { EVENT, WHATSAPP_MESA, WHATSAPP_MESSAGE, mxn, whatsappLink } from "@/lib/event";
+import { EVENT, WHATSAPP_MESA, WHATSAPP_MESSAGE, whatsappLink } from "@/lib/event";
 
 const quickBuy = whatsappLink(WHATSAPP_MESSAGE);
 
@@ -21,8 +21,8 @@ const highlights = [
     icon: "🎭",
   },
   {
-    title: `${mxn(EVENT.prizes)} en premios`,
-    text: "Para los mejores disfraces de la noche. Prepárate.",
+    title: "Premios",
+    text: "Para los mejores disfraces de la noche: botellas y consumibles.",
     icon: "🏆",
   },
 ];
@@ -104,7 +104,7 @@ export default function Home() {
 
         <div className="relative z-10 flex w-full max-w-4xl flex-col items-center">
           <span className="mb-8 rounded-full border border-blood-bright/70 bg-black/40 px-4 py-1 text-xs font-bold uppercase tracking-[0.3em] text-blood-bright backdrop-blur">
-            Adults only · +18 · Solo {EVENT.capacity} accesos
+            Adults only · +18 · Acceso limitado
           </span>
           <Image
             src="/logo-m-producciones.webp"
@@ -162,7 +162,7 @@ export default function Home() {
           <Eyebrow>La noche</Eyebrow>
           <Heading>Bienvenido al manicomio</Heading>
           <p className="mx-auto mt-4 max-w-2xl text-muted">
-            Una noche de Halloween exclusiva en el corazón del Querétaro moderno. Solo {EVENT.capacity} accesos.
+            Una noche de Halloween exclusiva en el corazón del Querétaro moderno. Acceso limitado.
           </p>
         </div>
         <div className="mt-14 grid gap-px overflow-hidden rounded-lg border border-wine/60 bg-wine/40 sm:grid-cols-3">
@@ -229,7 +229,7 @@ export default function Home() {
           </p>
           <div className="mt-8">
             <PriceTiers />
-            <p className="mt-3 text-xs text-muted">Precio por persona. Solo {EVENT.capacity} accesos.</p>
+            <p className="mt-3 text-xs text-muted">Precio por persona. Acceso limitado.</p>
           </div>
           <ol className="mt-8 space-y-4">
             {steps.map((step, i) => (
