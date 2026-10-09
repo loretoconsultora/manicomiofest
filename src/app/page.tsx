@@ -89,7 +89,7 @@ export default function Home() {
         <div className="mt-14 grid gap-px overflow-hidden rounded-lg border border-white/10 bg-white/10 sm:grid-cols-3">
           {[
             { k: "Fecha", v: EVENT.dateLabel, s: "2026" },
-            { k: "Horario", v: EVENT.timeLabel, s: "Llega temprano" },
+            { k: "Horario", v: EVENT.timeLabel, s: "Noche de Halloween" },
             { k: "Lugar", v: EVENT.venue, s: `${EVENT.address}, ${EVENT.city}` },
           ].map((d) => (
             <div key={d.k} className="bg-background p-8 text-center">
